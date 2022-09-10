@@ -10,5 +10,5 @@ sqlparse==0.4.2
 stripe==4.1.0
 tzdata==2022.2
 urllib3==1.26.12
-gunicorn
-django-heroku
+gunicorn>=20.0.4,<20.1.0
+django-heroku>=0.3.1,<0.4.0
