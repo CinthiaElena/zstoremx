@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Create a New Account
+{% endblock %}
+
+{% block content %}
+
+  <div>
+    {% if not form.is_valid %}
+      <div class="mx-auto">
+        <br>
+        <h1 class="product_title text-center">
+          Crear cuenta
+        </h1>
+        <br>
+        <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light">
+          <br>
+          <p>Ingresa la información necesaria para crear una cuenta nueva.</p>
+          <form method="post">
+            {% csrf_token %}
+            <p>{{ form | crispy }}</p>
+            <button type="submit" name="button" class="btn btn-secondary">Sign Up</button>
+          </form>
+          <br>
+        </div>
+      </div>
+    {% else %}
+      <div class="mx-auto">
+        <br>
+        <h1 class="product_title text-center">
+          Tu cuenta ha sido creada exitosamente.
+        </h1>
+        <br>
+        <div class="container">
+            <p>
+              Querido cliente,
+              <br>
+              <br>
+              Tu cuenta ha sido creada y esta lista para ser usada.
+              <br>
+              <a href="{% url 'home' %}">Continuar comprando</a> y disfruta de la variedad de productos que tenemos en Z-Store.
+            </p>
+        </div>
+      </div>
+
+    {% endif %}
+  </div>
+{% endblock %}

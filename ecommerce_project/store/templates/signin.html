@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+Sign in
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <br>
+    <h1 class="product_title text-center">
+      Iniciar sesión o crear cuenta nueva
+    </h1>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-lg-6 text-center custom_div">
+        <br>
+        <h2 class="product_title">
+          Cuenta nueva
+        </h2>
+        <br>
+        <p>Cuando creas una cuenta puedes ver el historial de compras.</p>
+        <br>
+        <a href="{% url 'signup' %}" class="btn btn-secondary">Crear una cuenta nueva</a>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 bg-light">
+        <div>
+          <br>
+          <h2 class="product_title">
+            Clientes registrados
+          </h2>
+          <form method="post">
+            {% csrf_token %}
+            <p>{{ form | crispy }}</p>
+            <button type="submit" name="button" class="btn btn-secondary">Iniciar sesión</button>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  <br>
+{% endblock %}
+
